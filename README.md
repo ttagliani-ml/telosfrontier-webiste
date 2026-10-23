@@ -6,7 +6,7 @@ React + Vite + TypeScript + Tailwind. Single page, deployed to GitHub Pages by `
 
 1. **`src/config.ts`** holds the contact email (`hello@telosfrontier.com`), the legal address shown in the footer, and an optional `linkedin` URL.
 2. **Contact form**: opens the visitor's email app with their message pre-filled and addressed to `contactEmail`. Nothing to set up. (If you ever want submissions delivered without the visitor's email app, paste a [Formspree](https://formspree.io) endpoint into `formEndpoint`.)
-3. **Custom domain** (optional): add a file `public/CNAME` containing just your domain (e.g. `telosfrontier.com`), then point the domain's DNS at GitHub Pages (Settings → Pages).
+3. **Custom domain**: set it in the repo under Settings → Pages → Custom domain, and point the domain's DNS at GitHub Pages (A records for the root domain, a `www` CNAME to `<your-github-user>.github.io`). Because this repo deploys with a GitHub Actions workflow, no `CNAME` file is needed.
 
 ## Commands
 

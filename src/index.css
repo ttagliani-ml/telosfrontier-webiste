@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --obsidian: #0e0e10;
+  --cyan: #22e4ff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+  body {
+    @apply bg-obsidian font-body text-chrome antialiased;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    @apply font-display text-bright;
+  }
+  ::selection {
+    background: var(--cyan);
+    color: var(--obsidian);
+  }
+  :focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-page px-5 sm:px-8 lg:px-12;
+  }
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-3 px-6 text-[15px] font-medium transition-colors duration-200;
+  }
+  .btn-primary {
+    @apply btn bg-cyan text-obsidian hover:bg-bright;
+  }
+  .btn-ghost {
+    @apply btn border border-line text-bright hover:border-chrome;
+  }
+  .section-title {
+    @apply font-display text-[clamp(2rem,4.2vw,3.5rem)] font-semibold leading-[1.05] tracking-[-0.02em];
+  }
+  .field {
+    @apply w-full border-0 border-b border-line bg-transparent px-0 py-3 text-bright placeholder:text-smoke/70 focus:border-cyan focus:outline-none focus:ring-0;
+  }
+  .skip-link {
+    @apply fixed left-4 top-4 z-[100] -translate-y-24 bg-cyan px-4 py-2 text-obsidian focus:translate-y-0;
+  }
+}
+
+/* Hero load sequence: the one orchestrated moment on the page */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.rise { animation: rise 900ms cubic-bezier(0.2, 0.7, 0.1, 1) both; }
+.fade { animation: fade 1400ms ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise, .fade { animation: none; }
+}
